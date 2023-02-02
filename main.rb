@@ -1,6 +1,7 @@
 #step 1 create a board
 #variables 
 board = [" ", " ", " ", " ", " ", " ", " ", " ", " " ]
+free_positions = ["0", "1", "3", "4", "5", "6", "7", "8"]
 WELCOME_MESSAGE = "Welcome to Tic Tac Toe! 
 The game is played on a grid that's 3 squares by 3 squares.
 You are X, your friend and the computer is O. 
@@ -37,12 +38,6 @@ display_board(board)
 	end
 end
 
-class HumanPlayer < Player
-end
-
-class ComputerPlayer < Player
-end
-
  # step3 create a loop where players switch turns
 
  #step 4 check to see if there is a match
@@ -52,5 +47,7 @@ def play_game()
 	puts WELCOME_MESSAGE
 	puts "Enter a name: "
 	player_name = gets.chomp()
+	human_player = Player.new(player_name, "X")
+	computer_player = Player.new("Computer", "O")
 end
  
