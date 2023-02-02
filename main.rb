@@ -12,6 +12,16 @@ free_positions = {
 	"7" => "7", 
 	"8" => "8"
 }
+WINNING_OUTCOMES = [
+	["0", "1", "2"], #horizonal
+	["3", "4", "5"], #horizonal
+	["6", "7", "8"], #horizonal
+	["0", "4", "8"], #diagonal
+	["2", "4", "6"],  #diagonal
+	["0", "3", "6"], #vertical
+	["1", "4", "7"], #vertical
+	["2", "5", "8"], #vertical
+]
 WELCOME_MESSAGE = "Welcome to Tic Tac Toe! 
 The game is played on a grid that's 3 squares by 3 squares.
 You are X, your friend and the computer is O. 
@@ -41,6 +51,10 @@ def display_board (board)
 		@marker = marker
 	end
 
+	def name
+		return @name
+	end
+
 	def place_mark(board, position)
 		board[position.to_i] = @marker
 		display_board(board)
@@ -57,7 +71,7 @@ def play_game(board, free_positions)
   game_running = true
 	display_board(board)
 	while game_running
-		puts "Choose a position 0-8"
+		puts "\n#{human_player.name}, Choose a position 0-8"
 		player_position = gets.chomp()
 		is_free = free_positions.include?(player_position)
 		while is_free == false
@@ -70,8 +84,7 @@ def play_game(board, free_positions)
 		new_board = human_player.place_mark(board, player_position)
 		random_array = free_positions.values
 		random_number = random_array.shuffle.first
-		puts "Computer's turn!
-		Computer chooses position: #{random_number}"
+		puts "\nComputer's turn! \nComputer chooses position: #{random_number}"
 		board = computer_player.place_mark(new_board, random_number)
 		free_positions.delete(random_number)
 	end #end of while game loop
