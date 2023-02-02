@@ -17,12 +17,30 @@ def display_board (board)
   puts " #{board[6]} | #{board[7]} | #{board[8]} "
  end
 
+# display_board(board)
+board[5] = "X"
 display_board(board)
 
  # step2 create players
  class Player 
+	attr_reader :marker
     
-    def
+  def initialize(name, marker)
+		@name = name
+		@marker = marker
+	end
+
+	def place_mark(position)
+		board[position] = @marker
+		display_board(board)
+		return board
+	end
+end
+
+class HumanPlayer < Player
+end
+
+class ComputerPlayer < Player
 end
 
  # step3 create a loop where players switch turns
