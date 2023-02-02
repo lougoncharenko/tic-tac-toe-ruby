@@ -1,4 +1,5 @@
-#step 1 create a board
+require_relative "./classes/player.rb"
+
 #variables 
 board = [" ", " ", " ", " ", " ", " ", " ", " ", " " ]
 free_positions = {
@@ -37,30 +38,6 @@ def display_board (board)
   puts "-----------"
   puts " #{board[6]} | #{board[7]} | #{board[8]} "
  end
-
-# display_board(board)
-# board[5] = "X"
-# display_board(board)
-
- # step2 create players
- class Player 
-	attr_reader :marker
-    
-  def initialize(name, marker)
-		@name = name
-		@marker = marker
-	end
-
-	def name
-		return @name
-	end
-
-	def place_mark(board, position)
-		board[position.to_i] = @marker
-		display_board(board)
-		return board
-	end
-end
 
 def play_game(board, free_positions)
 	puts WELCOME_MESSAGE
